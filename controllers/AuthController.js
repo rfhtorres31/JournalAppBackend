@@ -12,7 +12,7 @@ const prisma = new PrismaClient();
 
 
 //==================== User Registration ==============================//
-const RegisterController =  async function (req, res) {
+const registerUser =  async function (req, res) {
   
    const saltRound = 10;
    const hashedPassword = await bcrypt.hash(req.body.password, saltRound);
@@ -88,7 +88,7 @@ const getUserRecord = async (loginInput) => {
 };
 
 //=================== User Login/Authentication ========================//
-const LoginController =  async function (req, res) {
+const loginUser =  async function (req, res) {
 
       //==== Check if user password and hashed password is match ====//
       try {
@@ -144,7 +144,7 @@ const LoginController =  async function (req, res) {
 //============== End of User Authentication ========================//
 
 module.exports = {
-    RegisterController,
-    LoginController
+    registerUser,
+    loginUser
 };
 
