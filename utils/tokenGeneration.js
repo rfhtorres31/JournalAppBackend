@@ -10,7 +10,7 @@ const secretKey = process.env.JWT_SECRET_KEY;
 const generateToken = async (payload) => {
      
 
-     const token = await signJWT(payload, secretKey, {expiresIn: '1m'});
+     const token = await signJWT(payload, secretKey, {expiresIn: '1h'});
 
      return token;
 };

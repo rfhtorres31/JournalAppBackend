@@ -119,11 +119,13 @@ const loginUser =  async function (req, res) {
          
          const payload = {id:userRecord.id.toString(), name:userRecord.name};
          const token = await generateToken(payload);
+         
+         const responseDetails = {message:"Login Successful", username:userRecord.username}
 
          succResponse.message = "Ok";
          succResponse.code = "OK";
          succResponse.status = 200,
-         succResponse.details = "Login Successful";
+         succResponse.details = responseDetails;
          succResponse.token = token;
 
          return res.status(200).json(succResponse);     
