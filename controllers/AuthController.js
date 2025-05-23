@@ -37,9 +37,8 @@ const registerUser =  async function (req, res) {
 
           return res.status(409).json(errResponse);
       }
-
-      
-      if (isUsernameExist) {
+  
+      else if (isUsernameExist) {
 
           errResponse.message = "Conflict";
           errResponse.code = "CONFLICT";
