@@ -7,7 +7,7 @@ const signJWT = promisify(jwt.sign); // converts the jwt.sign function to a prom
 //const secretKey = crypto.randomBytes(64).toString('hex');
 const secretKey = process.env.JWT_SECRET_KEY;
 
-const generateToken = async (payload) => {
+const generateToken = async (payload, tokenID) => {
      
 
      const token = await signJWT(payload, secretKey, {expiresIn: '1h'});

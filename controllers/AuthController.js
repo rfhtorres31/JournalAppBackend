@@ -5,8 +5,9 @@ const {PrismaClient} = require('../generated/prisma');
 // in this case, it creates a clone/copy of the error and success response object 
 const errResponse = {...require('../lib/errorResponse')}; // to ensure a fresh copy of errorResponse object and to avoid mutation when used to other parts of the app
 const succResponse = {...require('../lib/successResponse')}; // to ensure a fresh copy of successResponse object and to avoid mutation when used to other parts of the app
-const generateToken = require('../utils/tokenGeneration');
-
+const generateToken = require('../utils/tokenGenerationJWT');
+const {v4: uuidv4 } = require('uuid'); // imports Unique Identifier string generator function
+const {storeToken} = require('../controllers/TokenController');
 
 const prisma = new PrismaClient();
 
@@ -116,18 +117,25 @@ const loginUser =  async function (req, res) {
             return res.status(401).json(errResponse);
          }
          
-         const payload = {id:userRecord.id.toString(), name:userRecord.name};
-         const token = await generateToken(payload);
+         // Token Management
+         const tokenID = uuidv4(); // generates unique identifier string for Token ID
+         const payload = {id:userRecord.id.toString(), jwtID:tokenID, name:userRecord.name};
+
+         const token = await generateToken(payload, tokenID); // token generation
          
-         const responseDetails = {message:"Login Successful", username:userRecord.username}
+         const isTokenStored = await storeToken(tokenID, userRecord.id.toString()); // storing token on redis
 
-         succResponse.message = "Ok";
-         succResponse.code = "OK";
-         succResponse.status = 200,
-         succResponse.details = responseDetails;
-         succResponse.token = token;
+         if (isTokenStored) {
+            const responseDetails = {message:"Login Successful", username:userRecord.username}
 
-         return res.status(200).json(succResponse);     
+            succResponse.message = "Ok";
+            succResponse.code = "OK";
+            succResponse.status = 200,
+            succResponse.details = responseDetails;
+            succResponse.token = token;
+
+            return res.status(200).json(succResponse); 
+         }         
           
      }
      catch (error) {
