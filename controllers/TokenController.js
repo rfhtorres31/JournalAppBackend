@@ -43,7 +43,7 @@ const verifyToken = async (req, res, next) => {
 
 
 // Storing Token on Redis
-const storeToken = async (tokenID, userID, ttlSeconds=10)=> {
+const storeToken = async (tokenID, userID, ttlSeconds=3600)=> {
   
    try {                                     //key=token:${tokenID}, value=userID. It sets the key to expire to 900 seconds (TTL->Time to Live)
         const result = await redisClient.set(`token:${tokenID}`, userID, 'EX', ttlSeconds);
@@ -63,10 +63,26 @@ const storeToken = async (tokenID, userID, ttlSeconds=10)=> {
 };
 
 
+// Logout User, Token deletion from Redis 
+const logoutUser = async function (req, res) {
+     
+    const authorizationValue = req.headers.authorization;
+    const token = authorizationValue.split(' ')[1];
+    let isTokenDeleted = 0;
+
+    if (token) {
+         const payload = await jwt.verify(token, process.env.JWT_SECRET_KEY);
+         const tokenID = payload.jwtID;
+         isTokenDeleted = await redisClient.del(`token:${tokenID}`); // this returns an integer, 1 if key was found and deleted, 0 if not.                
+    }
+
+    return isTokenDeleted === 1? res.status(200).json("Token deleted") : res.status(500).json("There is an error on token deletion"); 
+   
+};
 
 
 module.exports = {
     verifyToken,
-    verifyTokenOnRedis,
     storeToken, 
+    logoutUser
 };
