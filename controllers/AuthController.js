@@ -123,20 +123,23 @@ const loginUser =  async function (req, res) {
 
          const token = await generateToken(payload, tokenID); // token generation
          
-         const isTokenStored = await storeToken(tokenID, userRecord.id.toString()); // storing token on redis
+         const responseTokenStorageObj = await storeToken(tokenID, userRecord.id.toString()); // storing token on redis
+         const isTokenStored = responseTokenStorageObj?.success;
 
-         if (isTokenStored) {
-            const responseDetails = {message:"Login Successful", username:userRecord.username}
+         if (!isTokenStored) {
+            
+            throw new Error(responseTokenStorageObj?.error);
+         }
 
-            succResponse.message = "Ok";
-            succResponse.code = "OK";
-            succResponse.status = 200,
-            succResponse.details = responseDetails;
-            succResponse.token = token;
+         const responseDetails = {message:"Login Successful", username:userRecord.username}
 
-            return res.status(200).json(succResponse); 
-         }         
-          
+         succResponse.message = "Ok";
+         succResponse.code = "OK";
+         succResponse.status = 200,
+         succResponse.details = responseDetails;
+         succResponse.token = token;
+
+         return res.status(200).json(succResponse);        
      }
      catch (error) {
        
@@ -144,7 +147,7 @@ const loginUser =  async function (req, res) {
          errResponse.message = "Internal Server Error";
          errResponse.code = "INTERNAL_SERVER_ERROR";
          errResponse.status = 500,
-         errResponse.details = "Internal Server Error";
+         errResponse.details = error;
 
          return res.status(500).json(errResponse);
      }
