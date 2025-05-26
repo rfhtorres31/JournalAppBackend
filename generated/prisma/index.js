@@ -141,7 +141,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\ron\\Documents\\GitHub\\JournalAppBackend\\generated\\prisma",
+      "value": "C:\\Users\\ron\\Documents\\Github\\JournalAppBackend\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -157,7 +157,7 @@ const config = {
     "previewFeatures": [
       "multiSchema"
     ],
-    "sourceFilePath": "C:\\Users\\ron\\Documents\\GitHub\\JournalAppBackend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\ron\\Documents\\Github\\JournalAppBackend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

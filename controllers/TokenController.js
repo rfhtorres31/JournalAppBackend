@@ -46,7 +46,7 @@ const verifyToken = async (req, res, next) => {
 
 
 // Storing Token on Redis
-const storeToken = async (tokenID, userID, ttlSeconds=10) => {
+const storeToken = async (tokenID, userID, ttlSeconds=3600) => {
   
    try {  
         if(!tokenID || !userID) {
