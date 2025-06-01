@@ -27,7 +27,7 @@ app.get('/', function(req,res){
 });
 
 
-app.use('/api/auth/', routes);
+app.use('/api/', routes);
 
 
 

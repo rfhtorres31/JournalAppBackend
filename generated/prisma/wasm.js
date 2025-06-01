@@ -138,7 +138,7 @@ exports.Prisma.TaskScalarFieldEnum = {
   due_date: 'due_date',
   is_completed: 'is_completed',
   created_at: 'created_at',
-  due_time: 'due_time',
+  from_date: 'from_date',
   updated_at: 'updated_at'
 };
 

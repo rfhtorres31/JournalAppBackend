@@ -2150,7 +2150,7 @@ export namespace Prisma {
     due_date: Date | null
     is_completed: boolean | null
     created_at: Date | null
-    due_time: Date | null
+    from_date: Date | null
     updated_at: Date | null
   }
 
@@ -2162,7 +2162,7 @@ export namespace Prisma {
     due_date: Date | null
     is_completed: boolean | null
     created_at: Date | null
-    due_time: Date | null
+    from_date: Date | null
     updated_at: Date | null
   }
 
@@ -2174,7 +2174,7 @@ export namespace Prisma {
     due_date: number
     is_completed: number
     created_at: number
-    due_time: number
+    from_date: number
     updated_at: number
     _all: number
   }
@@ -2198,7 +2198,7 @@ export namespace Prisma {
     due_date?: true
     is_completed?: true
     created_at?: true
-    due_time?: true
+    from_date?: true
     updated_at?: true
   }
 
@@ -2210,7 +2210,7 @@ export namespace Prisma {
     due_date?: true
     is_completed?: true
     created_at?: true
-    due_time?: true
+    from_date?: true
     updated_at?: true
   }
 
@@ -2222,7 +2222,7 @@ export namespace Prisma {
     due_date?: true
     is_completed?: true
     created_at?: true
-    due_time?: true
+    from_date?: true
     updated_at?: true
     _all?: true
   }
@@ -2321,7 +2321,7 @@ export namespace Prisma {
     due_date: Date
     is_completed: boolean
     created_at: Date
-    due_time: Date
+    from_date: Date
     updated_at: Date
     _count: TaskCountAggregateOutputType | null
     _avg: TaskAvgAggregateOutputType | null
@@ -2352,7 +2352,7 @@ export namespace Prisma {
     due_date?: boolean
     is_completed?: boolean
     created_at?: boolean
-    due_time?: boolean
+    from_date?: boolean
     updated_at?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
@@ -2365,7 +2365,7 @@ export namespace Prisma {
     due_date?: boolean
     is_completed?: boolean
     created_at?: boolean
-    due_time?: boolean
+    from_date?: boolean
     updated_at?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
@@ -2378,7 +2378,7 @@ export namespace Prisma {
     due_date?: boolean
     is_completed?: boolean
     created_at?: boolean
-    due_time?: boolean
+    from_date?: boolean
     updated_at?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
@@ -2391,11 +2391,11 @@ export namespace Prisma {
     due_date?: boolean
     is_completed?: boolean
     created_at?: boolean
-    due_time?: boolean
+    from_date?: boolean
     updated_at?: boolean
   }
 
-  export type TaskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "title" | "description" | "due_date" | "is_completed" | "created_at" | "due_time" | "updated_at", ExtArgs["result"]["task"]>
+  export type TaskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "title" | "description" | "due_date" | "is_completed" | "created_at" | "from_date" | "updated_at", ExtArgs["result"]["task"]>
   export type TaskInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2419,7 +2419,7 @@ export namespace Prisma {
       due_date: Date
       is_completed: boolean
       created_at: Date
-      due_time: Date
+      from_date: Date
       updated_at: Date
     }, ExtArgs["result"]["task"]>
     composites: {}
@@ -2852,7 +2852,7 @@ export namespace Prisma {
     readonly due_date: FieldRef<"Task", 'DateTime'>
     readonly is_completed: FieldRef<"Task", 'Boolean'>
     readonly created_at: FieldRef<"Task", 'DateTime'>
-    readonly due_time: FieldRef<"Task", 'DateTime'>
+    readonly from_date: FieldRef<"Task", 'DateTime'>
     readonly updated_at: FieldRef<"Task", 'DateTime'>
   }
     
@@ -3303,7 +3303,7 @@ export namespace Prisma {
     due_date: 'due_date',
     is_completed: 'is_completed',
     created_at: 'created_at',
-    due_time: 'due_time',
+    from_date: 'from_date',
     updated_at: 'updated_at'
   };
 
@@ -3489,7 +3489,7 @@ export namespace Prisma {
     due_date?: DateTimeFilter<"Task"> | Date | string
     is_completed?: BoolFilter<"Task"> | boolean
     created_at?: DateTimeFilter<"Task"> | Date | string
-    due_time?: DateTimeFilter<"Task"> | Date | string
+    from_date?: DateTimeFilter<"Task"> | Date | string
     updated_at?: DateTimeFilter<"Task"> | Date | string
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -3502,7 +3502,7 @@ export namespace Prisma {
     due_date?: SortOrder
     is_completed?: SortOrder
     created_at?: SortOrder
-    due_time?: SortOrder
+    from_date?: SortOrder
     updated_at?: SortOrder
     User?: UserOrderByWithRelationInput
   }
@@ -3518,7 +3518,7 @@ export namespace Prisma {
     due_date?: DateTimeFilter<"Task"> | Date | string
     is_completed?: BoolFilter<"Task"> | boolean
     created_at?: DateTimeFilter<"Task"> | Date | string
-    due_time?: DateTimeFilter<"Task"> | Date | string
+    from_date?: DateTimeFilter<"Task"> | Date | string
     updated_at?: DateTimeFilter<"Task"> | Date | string
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -3531,7 +3531,7 @@ export namespace Prisma {
     due_date?: SortOrder
     is_completed?: SortOrder
     created_at?: SortOrder
-    due_time?: SortOrder
+    from_date?: SortOrder
     updated_at?: SortOrder
     _count?: TaskCountOrderByAggregateInput
     _avg?: TaskAvgOrderByAggregateInput
@@ -3551,7 +3551,7 @@ export namespace Prisma {
     due_date?: DateTimeWithAggregatesFilter<"Task"> | Date | string
     is_completed?: BoolWithAggregatesFilter<"Task"> | boolean
     created_at?: DateTimeWithAggregatesFilter<"Task"> | Date | string
-    due_time?: DateTimeWithAggregatesFilter<"Task"> | Date | string
+    from_date?: DateTimeWithAggregatesFilter<"Task"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Task"> | Date | string
   }
 
@@ -3636,7 +3636,7 @@ export namespace Prisma {
     due_date: Date | string
     is_completed: boolean
     created_at?: Date | string
-    due_time: Date | string
+    from_date: Date | string
     updated_at?: Date | string
     User: UserCreateNestedOneWithoutTaskInput
   }
@@ -3649,7 +3649,7 @@ export namespace Prisma {
     due_date: Date | string
     is_completed: boolean
     created_at?: Date | string
-    due_time: Date | string
+    from_date: Date | string
     updated_at?: Date | string
   }
 
@@ -3660,7 +3660,7 @@ export namespace Prisma {
     due_date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_completed?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    due_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    from_date?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     User?: UserUpdateOneRequiredWithoutTaskNestedInput
   }
@@ -3673,7 +3673,7 @@ export namespace Prisma {
     due_date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_completed?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    due_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    from_date?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3685,7 +3685,7 @@ export namespace Prisma {
     due_date: Date | string
     is_completed: boolean
     created_at?: Date | string
-    due_time: Date | string
+    from_date: Date | string
     updated_at?: Date | string
   }
 
@@ -3696,7 +3696,7 @@ export namespace Prisma {
     due_date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_completed?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    due_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    from_date?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3708,7 +3708,7 @@ export namespace Prisma {
     due_date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_completed?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    due_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    from_date?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3863,7 +3863,7 @@ export namespace Prisma {
     due_date?: SortOrder
     is_completed?: SortOrder
     created_at?: SortOrder
-    due_time?: SortOrder
+    from_date?: SortOrder
     updated_at?: SortOrder
   }
 
@@ -3880,7 +3880,7 @@ export namespace Prisma {
     due_date?: SortOrder
     is_completed?: SortOrder
     created_at?: SortOrder
-    due_time?: SortOrder
+    from_date?: SortOrder
     updated_at?: SortOrder
   }
 
@@ -3892,7 +3892,7 @@ export namespace Prisma {
     due_date?: SortOrder
     is_completed?: SortOrder
     created_at?: SortOrder
-    due_time?: SortOrder
+    from_date?: SortOrder
     updated_at?: SortOrder
   }
 
@@ -4110,7 +4110,7 @@ export namespace Prisma {
     due_date: Date | string
     is_completed: boolean
     created_at?: Date | string
-    due_time: Date | string
+    from_date: Date | string
     updated_at?: Date | string
   }
 
@@ -4121,7 +4121,7 @@ export namespace Prisma {
     due_date: Date | string
     is_completed: boolean
     created_at?: Date | string
-    due_time: Date | string
+    from_date: Date | string
     updated_at?: Date | string
   }
 
@@ -4162,7 +4162,7 @@ export namespace Prisma {
     due_date?: DateTimeFilter<"Task"> | Date | string
     is_completed?: BoolFilter<"Task"> | boolean
     created_at?: DateTimeFilter<"Task"> | Date | string
-    due_time?: DateTimeFilter<"Task"> | Date | string
+    from_date?: DateTimeFilter<"Task"> | Date | string
     updated_at?: DateTimeFilter<"Task"> | Date | string
   }
 
@@ -4229,7 +4229,7 @@ export namespace Prisma {
     due_date: Date | string
     is_completed: boolean
     created_at?: Date | string
-    due_time: Date | string
+    from_date: Date | string
     updated_at?: Date | string
   }
 
@@ -4240,7 +4240,7 @@ export namespace Prisma {
     due_date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_completed?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    due_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    from_date?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4251,7 +4251,7 @@ export namespace Prisma {
     due_date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_completed?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    due_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    from_date?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4262,7 +4262,7 @@ export namespace Prisma {
     due_date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_completed?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    due_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    from_date?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

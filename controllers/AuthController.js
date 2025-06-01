@@ -63,11 +63,13 @@ const registerUser =  async function (req, res) {
        succResponse.status = 201,
        succResponse.details = "Successful Registration";
 
-       return res.status(201).json(succResponse)
+       const {tokenDetails, ...response} = succResponse;
+
+       return res.status(201).json(response);
    }
-   catch (error) {
+   catch (err) {
        
-        console.log(error);
+        console.log(err);
         errResponse.message = "Internal Server Error";
         errResponse.code = "INTERNAL_SERVER_ERROR";
         errResponse.status = 500,
