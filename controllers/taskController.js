@@ -9,7 +9,8 @@ const prisma = new PrismaClient();
 const taskController = async (req, res) => {
       
     try {
-        const {title, description, category, fromDate, toDate} = req.body;
+        const taskData = req.body;
+        const {title, description, category, fromDate, toDate} = req.body; // This is already parsed as Javascript Object String 
         console.log(taskData);
 
         if (!taskData) {
@@ -24,18 +25,23 @@ const taskController = async (req, res) => {
         const authorizationValue = req.headers.authorization; 
         const token = authorizationValue.split(' ')[1];
         const payload = jwt.decode(token);
+
         const userID = BigInt(payload?.id);
 
-        // const addTask = await prisma.task.create({
-        //     data: {
-        //       user_id: userID,
-        //       title: title,
-        //       description: description, 
 
-        //     },
-        // })
-        console.log(payload);
-        console.log(userID);
+        const addTask = await prisma.task.create({
+            data: {
+              user_id: userID,
+              title: title,
+              description: description,
+              from_date: new Date(fromDate),
+              due_date: new Date(toDate), 
+              category: category,
+              isCompleted: false,
+            },
+        })
+
+        console.log(addTask);
 
 
         

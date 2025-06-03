@@ -49,7 +49,7 @@ const registerUser =  async function (req, res) {
           return res.status(409).json(errResponse);
       }
 
-       await prisma.User.create({            
+       await prisma.user.create({            
          data: {
             name: req.body.fullname,
             username: req.body.username,

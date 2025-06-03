@@ -2147,11 +2147,12 @@ export namespace Prisma {
     user_id: bigint | null
     title: string | null
     description: string | null
-    due_date: Date | null
-    is_completed: boolean | null
-    created_at: Date | null
     from_date: Date | null
+    due_date: Date | null
+    isCompleted: boolean | null
+    created_at: Date | null
     updated_at: Date | null
+    category: string | null
   }
 
   export type TaskMaxAggregateOutputType = {
@@ -2159,11 +2160,12 @@ export namespace Prisma {
     user_id: bigint | null
     title: string | null
     description: string | null
-    due_date: Date | null
-    is_completed: boolean | null
-    created_at: Date | null
     from_date: Date | null
+    due_date: Date | null
+    isCompleted: boolean | null
+    created_at: Date | null
     updated_at: Date | null
+    category: string | null
   }
 
   export type TaskCountAggregateOutputType = {
@@ -2171,11 +2173,12 @@ export namespace Prisma {
     user_id: number
     title: number
     description: number
-    due_date: number
-    is_completed: number
-    created_at: number
     from_date: number
+    due_date: number
+    isCompleted: number
+    created_at: number
     updated_at: number
+    category: number
     _all: number
   }
 
@@ -2195,11 +2198,12 @@ export namespace Prisma {
     user_id?: true
     title?: true
     description?: true
-    due_date?: true
-    is_completed?: true
-    created_at?: true
     from_date?: true
+    due_date?: true
+    isCompleted?: true
+    created_at?: true
     updated_at?: true
+    category?: true
   }
 
   export type TaskMaxAggregateInputType = {
@@ -2207,11 +2211,12 @@ export namespace Prisma {
     user_id?: true
     title?: true
     description?: true
-    due_date?: true
-    is_completed?: true
-    created_at?: true
     from_date?: true
+    due_date?: true
+    isCompleted?: true
+    created_at?: true
     updated_at?: true
+    category?: true
   }
 
   export type TaskCountAggregateInputType = {
@@ -2219,11 +2224,12 @@ export namespace Prisma {
     user_id?: true
     title?: true
     description?: true
-    due_date?: true
-    is_completed?: true
-    created_at?: true
     from_date?: true
+    due_date?: true
+    isCompleted?: true
+    created_at?: true
     updated_at?: true
+    category?: true
     _all?: true
   }
 
@@ -2318,11 +2324,12 @@ export namespace Prisma {
     user_id: bigint
     title: string
     description: string
-    due_date: Date
-    is_completed: boolean
-    created_at: Date
     from_date: Date
+    due_date: Date
+    isCompleted: boolean
+    created_at: Date
     updated_at: Date
+    category: string | null
     _count: TaskCountAggregateOutputType | null
     _avg: TaskAvgAggregateOutputType | null
     _sum: TaskSumAggregateOutputType | null
@@ -2349,11 +2356,12 @@ export namespace Prisma {
     user_id?: boolean
     title?: boolean
     description?: boolean
-    due_date?: boolean
-    is_completed?: boolean
-    created_at?: boolean
     from_date?: boolean
+    due_date?: boolean
+    isCompleted?: boolean
+    created_at?: boolean
     updated_at?: boolean
+    category?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
 
@@ -2362,11 +2370,12 @@ export namespace Prisma {
     user_id?: boolean
     title?: boolean
     description?: boolean
-    due_date?: boolean
-    is_completed?: boolean
-    created_at?: boolean
     from_date?: boolean
+    due_date?: boolean
+    isCompleted?: boolean
+    created_at?: boolean
     updated_at?: boolean
+    category?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
 
@@ -2375,11 +2384,12 @@ export namespace Prisma {
     user_id?: boolean
     title?: boolean
     description?: boolean
-    due_date?: boolean
-    is_completed?: boolean
-    created_at?: boolean
     from_date?: boolean
+    due_date?: boolean
+    isCompleted?: boolean
+    created_at?: boolean
     updated_at?: boolean
+    category?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
 
@@ -2388,14 +2398,15 @@ export namespace Prisma {
     user_id?: boolean
     title?: boolean
     description?: boolean
-    due_date?: boolean
-    is_completed?: boolean
-    created_at?: boolean
     from_date?: boolean
+    due_date?: boolean
+    isCompleted?: boolean
+    created_at?: boolean
     updated_at?: boolean
+    category?: boolean
   }
 
-  export type TaskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "title" | "description" | "due_date" | "is_completed" | "created_at" | "from_date" | "updated_at", ExtArgs["result"]["task"]>
+  export type TaskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "title" | "description" | "from_date" | "due_date" | "isCompleted" | "created_at" | "updated_at" | "category", ExtArgs["result"]["task"]>
   export type TaskInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2416,11 +2427,12 @@ export namespace Prisma {
       user_id: bigint
       title: string
       description: string
-      due_date: Date
-      is_completed: boolean
-      created_at: Date
       from_date: Date
+      due_date: Date
+      isCompleted: boolean
+      created_at: Date
       updated_at: Date
+      category: string | null
     }, ExtArgs["result"]["task"]>
     composites: {}
   }
@@ -2849,11 +2861,12 @@ export namespace Prisma {
     readonly user_id: FieldRef<"Task", 'BigInt'>
     readonly title: FieldRef<"Task", 'String'>
     readonly description: FieldRef<"Task", 'String'>
-    readonly due_date: FieldRef<"Task", 'DateTime'>
-    readonly is_completed: FieldRef<"Task", 'Boolean'>
-    readonly created_at: FieldRef<"Task", 'DateTime'>
     readonly from_date: FieldRef<"Task", 'DateTime'>
+    readonly due_date: FieldRef<"Task", 'DateTime'>
+    readonly isCompleted: FieldRef<"Task", 'Boolean'>
+    readonly created_at: FieldRef<"Task", 'DateTime'>
     readonly updated_at: FieldRef<"Task", 'DateTime'>
+    readonly category: FieldRef<"Task", 'String'>
   }
     
 
@@ -3300,11 +3313,12 @@ export namespace Prisma {
     user_id: 'user_id',
     title: 'title',
     description: 'description',
-    due_date: 'due_date',
-    is_completed: 'is_completed',
-    created_at: 'created_at',
     from_date: 'from_date',
-    updated_at: 'updated_at'
+    due_date: 'due_date',
+    isCompleted: 'isCompleted',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    category: 'category'
   };
 
   export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
@@ -3324,6 +3338,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -3486,11 +3508,12 @@ export namespace Prisma {
     user_id?: BigIntFilter<"Task"> | bigint | number
     title?: StringFilter<"Task"> | string
     description?: StringFilter<"Task"> | string
-    due_date?: DateTimeFilter<"Task"> | Date | string
-    is_completed?: BoolFilter<"Task"> | boolean
-    created_at?: DateTimeFilter<"Task"> | Date | string
     from_date?: DateTimeFilter<"Task"> | Date | string
+    due_date?: DateTimeFilter<"Task"> | Date | string
+    isCompleted?: BoolFilter<"Task"> | boolean
+    created_at?: DateTimeFilter<"Task"> | Date | string
     updated_at?: DateTimeFilter<"Task"> | Date | string
+    category?: StringNullableFilter<"Task"> | string | null
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -3499,11 +3522,12 @@ export namespace Prisma {
     user_id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    due_date?: SortOrder
-    is_completed?: SortOrder
-    created_at?: SortOrder
     from_date?: SortOrder
+    due_date?: SortOrder
+    isCompleted?: SortOrder
+    created_at?: SortOrder
     updated_at?: SortOrder
+    category?: SortOrderInput | SortOrder
     User?: UserOrderByWithRelationInput
   }
 
@@ -3515,11 +3539,12 @@ export namespace Prisma {
     user_id?: BigIntFilter<"Task"> | bigint | number
     title?: StringFilter<"Task"> | string
     description?: StringFilter<"Task"> | string
-    due_date?: DateTimeFilter<"Task"> | Date | string
-    is_completed?: BoolFilter<"Task"> | boolean
-    created_at?: DateTimeFilter<"Task"> | Date | string
     from_date?: DateTimeFilter<"Task"> | Date | string
+    due_date?: DateTimeFilter<"Task"> | Date | string
+    isCompleted?: BoolFilter<"Task"> | boolean
+    created_at?: DateTimeFilter<"Task"> | Date | string
     updated_at?: DateTimeFilter<"Task"> | Date | string
+    category?: StringNullableFilter<"Task"> | string | null
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
@@ -3528,11 +3553,12 @@ export namespace Prisma {
     user_id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    due_date?: SortOrder
-    is_completed?: SortOrder
-    created_at?: SortOrder
     from_date?: SortOrder
+    due_date?: SortOrder
+    isCompleted?: SortOrder
+    created_at?: SortOrder
     updated_at?: SortOrder
+    category?: SortOrderInput | SortOrder
     _count?: TaskCountOrderByAggregateInput
     _avg?: TaskAvgOrderByAggregateInput
     _max?: TaskMaxOrderByAggregateInput
@@ -3548,11 +3574,12 @@ export namespace Prisma {
     user_id?: BigIntWithAggregatesFilter<"Task"> | bigint | number
     title?: StringWithAggregatesFilter<"Task"> | string
     description?: StringWithAggregatesFilter<"Task"> | string
-    due_date?: DateTimeWithAggregatesFilter<"Task"> | Date | string
-    is_completed?: BoolWithAggregatesFilter<"Task"> | boolean
-    created_at?: DateTimeWithAggregatesFilter<"Task"> | Date | string
     from_date?: DateTimeWithAggregatesFilter<"Task"> | Date | string
+    due_date?: DateTimeWithAggregatesFilter<"Task"> | Date | string
+    isCompleted?: BoolWithAggregatesFilter<"Task"> | boolean
+    created_at?: DateTimeWithAggregatesFilter<"Task"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Task"> | Date | string
+    category?: StringNullableWithAggregatesFilter<"Task"> | string | null
   }
 
   export type UserCreateInput = {
@@ -3633,11 +3660,12 @@ export namespace Prisma {
     id?: bigint | number
     title: string
     description: string
-    due_date: Date | string
-    is_completed: boolean
-    created_at?: Date | string
     from_date: Date | string
+    due_date: Date | string
+    isCompleted: boolean
+    created_at?: Date | string
     updated_at?: Date | string
+    category?: string | null
     User: UserCreateNestedOneWithoutTaskInput
   }
 
@@ -3646,22 +3674,24 @@ export namespace Prisma {
     user_id: bigint | number
     title: string
     description: string
-    due_date: Date | string
-    is_completed: boolean
-    created_at?: Date | string
     from_date: Date | string
+    due_date: Date | string
+    isCompleted: boolean
+    created_at?: Date | string
     updated_at?: Date | string
+    category?: string | null
   }
 
   export type TaskUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_completed?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     from_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
     User?: UserUpdateOneRequiredWithoutTaskNestedInput
   }
 
@@ -3670,11 +3700,12 @@ export namespace Prisma {
     user_id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_completed?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     from_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TaskCreateManyInput = {
@@ -3682,22 +3713,24 @@ export namespace Prisma {
     user_id: bigint | number
     title: string
     description: string
-    due_date: Date | string
-    is_completed: boolean
-    created_at?: Date | string
     from_date: Date | string
+    due_date: Date | string
+    isCompleted: boolean
+    created_at?: Date | string
     updated_at?: Date | string
+    category?: string | null
   }
 
   export type TaskUpdateManyMutationInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_completed?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     from_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TaskUncheckedUpdateManyInput = {
@@ -3705,11 +3738,12 @@ export namespace Prisma {
     user_id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_completed?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     from_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BigIntFilter<$PrismaModel = never> = {
@@ -3850,9 +3884,29 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type TaskCountOrderByAggregateInput = {
@@ -3860,11 +3914,12 @@ export namespace Prisma {
     user_id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    due_date?: SortOrder
-    is_completed?: SortOrder
-    created_at?: SortOrder
     from_date?: SortOrder
+    due_date?: SortOrder
+    isCompleted?: SortOrder
+    created_at?: SortOrder
     updated_at?: SortOrder
+    category?: SortOrder
   }
 
   export type TaskAvgOrderByAggregateInput = {
@@ -3877,11 +3932,12 @@ export namespace Prisma {
     user_id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    due_date?: SortOrder
-    is_completed?: SortOrder
-    created_at?: SortOrder
     from_date?: SortOrder
+    due_date?: SortOrder
+    isCompleted?: SortOrder
+    created_at?: SortOrder
     updated_at?: SortOrder
+    category?: SortOrder
   }
 
   export type TaskMinOrderByAggregateInput = {
@@ -3889,11 +3945,12 @@ export namespace Prisma {
     user_id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    due_date?: SortOrder
-    is_completed?: SortOrder
-    created_at?: SortOrder
     from_date?: SortOrder
+    due_date?: SortOrder
+    isCompleted?: SortOrder
+    created_at?: SortOrder
     updated_at?: SortOrder
+    category?: SortOrder
   }
 
   export type TaskSumOrderByAggregateInput = {
@@ -3907,6 +3964,24 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type TaskCreateNestedManyWithoutUserInput = {
@@ -3975,6 +4050,10 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type UserUpdateOneRequiredWithoutTaskNestedInput = {
@@ -4095,6 +4174,20 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -4103,26 +4196,56 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type TaskCreateWithoutUserInput = {
     id?: bigint | number
     title: string
     description: string
-    due_date: Date | string
-    is_completed: boolean
-    created_at?: Date | string
     from_date: Date | string
+    due_date: Date | string
+    isCompleted: boolean
+    created_at?: Date | string
     updated_at?: Date | string
+    category?: string | null
   }
 
   export type TaskUncheckedCreateWithoutUserInput = {
     id?: bigint | number
     title: string
     description: string
-    due_date: Date | string
-    is_completed: boolean
-    created_at?: Date | string
     from_date: Date | string
+    due_date: Date | string
+    isCompleted: boolean
+    created_at?: Date | string
     updated_at?: Date | string
+    category?: string | null
   }
 
   export type TaskCreateOrConnectWithoutUserInput = {
@@ -4159,11 +4282,12 @@ export namespace Prisma {
     user_id?: BigIntFilter<"Task"> | bigint | number
     title?: StringFilter<"Task"> | string
     description?: StringFilter<"Task"> | string
-    due_date?: DateTimeFilter<"Task"> | Date | string
-    is_completed?: BoolFilter<"Task"> | boolean
-    created_at?: DateTimeFilter<"Task"> | Date | string
     from_date?: DateTimeFilter<"Task"> | Date | string
+    due_date?: DateTimeFilter<"Task"> | Date | string
+    isCompleted?: BoolFilter<"Task"> | boolean
+    created_at?: DateTimeFilter<"Task"> | Date | string
     updated_at?: DateTimeFilter<"Task"> | Date | string
+    category?: StringNullableFilter<"Task"> | string | null
   }
 
   export type UserCreateWithoutTaskInput = {
@@ -4226,44 +4350,48 @@ export namespace Prisma {
     id?: bigint | number
     title: string
     description: string
-    due_date: Date | string
-    is_completed: boolean
-    created_at?: Date | string
     from_date: Date | string
+    due_date: Date | string
+    isCompleted: boolean
+    created_at?: Date | string
     updated_at?: Date | string
+    category?: string | null
   }
 
   export type TaskUpdateWithoutUserInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_completed?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     from_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TaskUncheckedUpdateWithoutUserInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_completed?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     from_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TaskUncheckedUpdateManyWithoutUserInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_completed?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     from_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    due_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

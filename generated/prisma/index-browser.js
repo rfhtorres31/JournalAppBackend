@@ -135,11 +135,12 @@ exports.Prisma.TaskScalarFieldEnum = {
   user_id: 'user_id',
   title: 'title',
   description: 'description',
-  due_date: 'due_date',
-  is_completed: 'is_completed',
-  created_at: 'created_at',
   from_date: 'from_date',
-  updated_at: 'updated_at'
+  due_date: 'due_date',
+  isCompleted: 'isCompleted',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  category: 'category'
 };
 
 exports.Prisma.SortOrder = {
@@ -150,6 +151,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 
