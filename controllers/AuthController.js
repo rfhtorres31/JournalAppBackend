@@ -7,7 +7,7 @@ const errResponse = {...require('../lib/errorResponse')}; // to ensure a fresh c
 const succResponse = {...require('../lib/successResponse')}; // to ensure a fresh copy of successResponse object and to avoid mutation when used to other parts of the app
 const generateToken = require('../utils/tokenGenerationJWT');
 const {v4: uuidv4 } = require('uuid'); // imports Unique Identifier string generator function
-const {storeToken} = require('../controllers/TokenController');
+const {storeToken} = require('./tokenController');
 
 const prisma = new PrismaClient();
 
@@ -63,7 +63,7 @@ const registerUser =  async function (req, res) {
        succResponse.status = 201,
        succResponse.details = "Successful Registration";
 
-       const {tokenDetails, ...response} = succResponse;
+       const {tokenDetails, content, ...response} = succResponse;
 
        return res.status(201).json(response);
    }
