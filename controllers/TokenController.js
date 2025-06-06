@@ -17,7 +17,7 @@ const verifyTokenOnRedis = async (tokenID) => {
         return false; // Token not found or expired
     }
 
-    console.log("Token is still valid");
+    //console.log("Token is still valid");
     return true;
 };
 

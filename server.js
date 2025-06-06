@@ -20,6 +20,6 @@ app.get('/db-status', async (req,res) => {
 });
 
 app.listen(port, ()=>{
-  console.log(`Server is running on port ${port} in ${process.env.NODE_ENV}`);
+  //console.log(`Server is running on port ${port} in ${process.env.NODE_ENV}`);
 });
 

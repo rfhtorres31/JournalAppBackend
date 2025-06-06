@@ -10,18 +10,24 @@ const addTask = async (req, res) => {
       
     try {
         const taskData = req.body;
-        const {title, description, category, fromDate, toDate} = req.body; // This is already parsed as Javascript Object String 
-        //console.log(taskData);
 
-        if (!taskData) {
+        const hasEmptyValues = Object.values(taskData).every(value => value === '');
+        
+        // This checks if  data from task data JSON are all empty
+        if (hasEmptyValues) {
+                                 
             errResponse.message = "Bad Request";
             errResponse.code = "BAD REQUEST";
             errResponse.status = 400,
             errResponse.details = "No data Received";
-            
-            res.status(400).json(errResponse);     
-        } 
         
+            res.status(400).json(errResponse); 
+            return;    
+        } 
+
+
+        // This is already parsed as Javascript Object String
+        const {title, description, category, fromDate, toDate} = req.body;  
         const authorizationValue = req.headers.authorization; 
         const token = authorizationValue.split(' ')[1];
         const payload = jwt.decode(token);
@@ -29,7 +35,7 @@ const addTask = async (req, res) => {
         const userID = BigInt(payload?.id);
 
 
-        const addTask = await prisma.task.create({
+         await prisma.task.create({
             data: {
               user_id: userID,
               title: title,
@@ -44,7 +50,9 @@ const addTask = async (req, res) => {
         //console.log(addTask);
 
 
-        
+
+
+
         succResponse.message = "Task Object Received";
         succResponse.code = "Ok";
         succResponse.status = 200,
@@ -57,10 +65,15 @@ const addTask = async (req, res) => {
         res.status(200).json(response);
     }
     catch (err) {
-       console.error(err);
+      //Computes estimated memory consumption without null check
+      console.error(err);
     }
-    
+
+
 };
+
+
+
 
 
 const getTask = async (req, res) => {
