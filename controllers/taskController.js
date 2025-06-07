@@ -5,12 +5,11 @@ const {PrismaClient} = require('../generated/prisma');
 
 const prisma = new PrismaClient();
 
-
 const addTask = async (req, res) => {
       
     try {
-        const taskData = req.body;
 
+        const taskData = req.body;
         const hasEmptyValues = Object.values(taskData).every(value => value === '');
         
         // This checks if  data from task data JSON are all empty
@@ -34,7 +33,6 @@ const addTask = async (req, res) => {
 
         const userID = BigInt(payload?.id);
 
-
          await prisma.task.create({
             data: {
               user_id: userID,
@@ -46,12 +44,6 @@ const addTask = async (req, res) => {
               isCompleted: false,
             },
         })
-
-        //console.log(addTask);
-
-
-
-
 
         succResponse.message = "Task Object Received";
         succResponse.code = "Ok";
@@ -65,7 +57,6 @@ const addTask = async (req, res) => {
         res.status(200).json(response);
     }
     catch (err) {
-      //Computes estimated memory consumption without null check
       console.error(err);
     }
 
@@ -124,10 +115,6 @@ const getTask = async (req, res) => {
     }
     
 }; 
-
-
-
-
 
 
 module.exports = {
