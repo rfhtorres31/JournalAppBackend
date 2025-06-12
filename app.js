@@ -5,7 +5,7 @@ const app = express();
 
 
 // Security Middleware/s
-//-- CORS 
+// CORS 
 const corsOptions = {
    origin: '*', // Allow all domain URLS to access the backend, Change this to specific URL/domain during production
    methods: ['GET','POST','PUT','DELETE'],

@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const errResponse = require('../lib/errorResponse');
 const succResponse = {...require('../lib/successResponse')};
 const {PrismaClient} = require('../generated/prisma');
+const { response } = require('express');
 
 const prisma = new PrismaClient();
 
@@ -89,7 +90,6 @@ const addTask = async (req, res) => {
 };
 
 
-
 const getTask = async (req, res) => {
     
     try {
@@ -111,6 +111,7 @@ const getTask = async (req, res) => {
                 user_id: userID,
             },
             select: {
+               id: true,
                title: true,
                description: true,
                due_date: true,
@@ -119,12 +120,14 @@ const getTask = async (req, res) => {
             }, 
         });
 
-        console.log(tasks.length);
+        const safeTasks = tasks.map(task=>({...task, id:task.id.toString()}));
 
-        succResponse.message = "Add Tasks";
+        //console.log(tasks.length);
+
+        succResponse.message = "Task added successfully";
         succResponse.code = "Ok";
         succResponse.status = 200,
-        succResponse.content = tasks,
+        succResponse.content = {"tasks": safeTasks, },
         succResponse.details = "Successful";
 
         const {tokenDetails, ...response} = succResponse;
@@ -139,7 +142,54 @@ const getTask = async (req, res) => {
 }; 
 
 
+const deleteTask = async (req, res) => {
+     
+     try {
+          const taskID = req.query.taskID;
+          const userID = req.query.userID;
+
+          if (!taskID) {
+           errResponse.message = "Bad Request";
+           errResponse.code = "BAD REQUEST";
+           errResponse.status = 400,
+           errResponse.details = "no task id";
+
+           return res.status(400).json(errResponse);
+          }
+
+          await prisma.subTask.deleteMany({
+            where: {
+                task_id: BigInt(taskID),
+            }
+          })
+
+          await prisma.task.delete({
+            where: {
+                id: BigInt(taskID),
+                user_id: BigInt(userID)
+            }
+          })
+
+        succResponse.message = "Task deleted successfully";
+        succResponse.code = "Ok";
+        succResponse.status = 200,
+        succResponse.details = "Successful";
+
+        const {tokenDetails, content, ...response} = succResponse;
+
+        return res.status(200).json(response);
+     }
+     catch (err) {
+       console.error(err);
+     }
+
+
+
+};
+
+
 module.exports = {
   addTask, 
   getTask,
+  deleteTask,
 }; 
