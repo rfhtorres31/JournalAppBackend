@@ -10,31 +10,44 @@ datasource db {
   schemas  = ["ReminderAppSchema", "public"]
 }
 
+model SubTask {
+  id          BigInt   @id @default(autoincrement())
+  sub_task    String
+  created_at  DateTime @default(now()) @db.Timetz(6)
+  updated_at  DateTime @default(now()) @db.Timetz(6)
+  isCompleted Boolean
+  task_id     BigInt
+  user_id     BigInt?
+  Task        Task     @relation(fields: [task_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_task_id")
+
+  @@schema("ReminderAppSchema")
+}
+
+model Task {
+  id          BigInt    @id @default(autoincrement())
+  user_id     BigInt
+  title       String
+  description String
+  due_date    DateTime  @db.Timestamptz(6)
+  isCompleted Boolean
+  created_at  DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime  @default(now()) @db.Timestamptz(6)
+  category    String
+  SubTask     SubTask[]
+  User        User      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_id")
+
+  @@schema("ReminderAppSchema")
+}
+
 model User {
   id         BigInt   @id @default(autoincrement())
   name       String
   username   String
   email      String
   password   String
-  created_at DateTime @default(now()) @db.Timestamp(6)
-  updated_at DateTime @default(now()) @db.Timestamp(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
   Task       Task[]
-
-  @@schema("ReminderAppSchema")
-}
-
-model Task {
-  id          BigInt   @id(map: "task_pkey") @default(autoincrement())
-  user_id     BigInt
-  title       String
-  description String
-  from_date   DateTime @db.Timestamp(6)
-  due_date    DateTime @db.Timestamp(6)
-  isCompleted Boolean
-  created_at  DateTime @default(now()) @db.Timestamp(6)
-  updated_at  DateTime @default(now()) @db.Timestamp(6)
-  category    String?
-  User        User     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_id")
 
   @@schema("ReminderAppSchema")
 }

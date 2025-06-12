@@ -120,6 +120,28 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.SubTaskScalarFieldEnum = {
+  id: 'id',
+  sub_task: 'sub_task',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  isCompleted: 'isCompleted',
+  task_id: 'task_id',
+  user_id: 'user_id'
+};
+
+exports.Prisma.TaskScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  title: 'title',
+  description: 'description',
+  due_date: 'due_date',
+  isCompleted: 'isCompleted',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  category: 'category'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -128,19 +150,6 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password',
   created_at: 'created_at',
   updated_at: 'updated_at'
-};
-
-exports.Prisma.TaskScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  title: 'title',
-  description: 'description',
-  from_date: 'from_date',
-  due_date: 'due_date',
-  isCompleted: 'isCompleted',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  category: 'category'
 };
 
 exports.Prisma.SortOrder = {
@@ -160,8 +169,9 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User',
-  Task: 'Task'
+  SubTask: 'SubTask',
+  Task: 'Task',
+  User: 'User'
 };
 
 /**

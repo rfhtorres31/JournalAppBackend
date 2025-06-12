@@ -10,6 +10,7 @@ const addTask = async (req, res) => {
     try {
 
         const taskData = req.body;
+        console.log(taskData);
         const hasEmptyValues = Object.values(taskData).every(value => value === '');
         
         // This checks if  data from task data JSON are all empty
@@ -25,25 +26,49 @@ const addTask = async (req, res) => {
         } 
 
 
+
+
+
         // This is already parsed as Javascript Object String
-        const {title, description, category, fromDate, toDate} = req.body;  
+        const {title, description, category, fromDate, toDate, subTask} = req.body;  
         const authorizationValue = req.headers.authorization; 
         const token = authorizationValue.split(' ')[1];
         const payload = jwt.decode(token);
+        const subTaskArr = subTask;
 
+        console.log(subTaskArr);
         const userID = BigInt(payload?.id);
 
-         await prisma.task.create({
+        const taskObj = await prisma.task.create({
             data: {
               user_id: userID,
               title: title,
               description: description,
-              from_date: new Date(fromDate),
               due_date: new Date(toDate), 
               category: category,
               isCompleted: false,
             },
         })
+    
+        // Check if the subarray task has content
+        if (taskData.subTask.length > 0) {
+            
+            const subTaskArr = taskData.subTask; 
+
+            for (let i = 0; i<subTaskArr.length; i++){
+
+                const subTask = subTaskArr[i];
+                
+                await prisma.subTask.create({
+                      data: {
+                         user_id: userID,
+                         task_id: taskObj.id,
+                         isCompleted: false,
+                         sub_task: subTask,
+                      }
+                })
+            }
+        }
 
         succResponse.message = "Task Object Received";
         succResponse.code = "Ok";
@@ -62,8 +87,6 @@ const addTask = async (req, res) => {
 
 
 };
-
-
 
 
 
@@ -90,7 +113,6 @@ const getTask = async (req, res) => {
             select: {
                title: true,
                description: true,
-               from_date: true,
                due_date: true,
                category: true,
                isCompleted: true,
