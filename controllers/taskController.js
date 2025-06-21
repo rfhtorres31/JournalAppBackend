@@ -106,7 +106,7 @@ const getTask = async (req, res) => {
             return res.status(400).json(errResponse);
         }
 
-        const tasks = await prisma.task.findMany({
+        const userTasks = await prisma.task.findMany({
             where: {
                 user_id: userID,
             },
@@ -117,17 +117,36 @@ const getTask = async (req, res) => {
                due_date: true,
                category: true,
                isCompleted: true,
+               SubTask: {
+                 select: {
+                    id: true,
+                    user_id: true,
+                    task_id: true,
+                    sub_task: true,
+                    isCompleted: true,
+                 },
+               },
             }, 
+
         });
 
-        const safeTasks = tasks.map(task=>({...task, id:task.id.toString()}));
+        console.dir(userTasks, { depth: null });
 
-        //console.log(tasks.length);
+        const safeTasks = userTasks.map(task=>({
+               ...task, 
+               id:task.id.toString(),
+                 SubTask: task.SubTask.map(sub => ({
+                  ...sub,
+                  id: sub.id.toString(),
+                  task_id: sub.task_id.toString(),
+                  user_id: sub.user_id !== null ? sub.user_id.toString() : null,
+                })),     
+        }));
 
         succResponse.message = "Task added successfully";
         succResponse.code = "Ok";
         succResponse.status = 200,
-        succResponse.content = {"tasks": safeTasks, },
+        succResponse.content = {"userTasks": safeTasks},
         succResponse.details = "Successful";
 
         const {tokenDetails, ...response} = succResponse;
@@ -156,13 +175,15 @@ const deleteTask = async (req, res) => {
 
            return res.status(400).json(errResponse);
           }
-
+          
+          // Delete child table first
           await prisma.subTask.deleteMany({
             where: {
                 task_id: BigInt(taskID),
             }
           })
-
+          
+          // Then the parent table
           await prisma.task.delete({
             where: {
                 id: BigInt(taskID),
@@ -188,8 +209,48 @@ const deleteTask = async (req, res) => {
 };
 
 
+// const updateTask = async (req, res) => {
+
+//    try {
+//           const taskID = req.query.taskID;
+//           const userID = req.query.userID;
+
+//           if (!taskID) {
+//            errResponse.message = "Bad Request";
+//            errResponse.code = "BAD REQUEST";
+//            errResponse.status = 400,
+//            errResponse.details = "no task id";
+
+//            return res.status(400).json(errResponse);
+//           }
+
+//           // await prisma.task.update({
+//           //     where: {
+//           //       id: 
+//           //     }, 
+
+
+
+//           // });
+
+
+
+
+
+
+
+
+//    }
+//    catch (err) {
+//      console.error(err);
+//    }
+
+// };
+
+
 module.exports = {
   addTask, 
   getTask,
   deleteTask,
+  // updateTask
 }; 

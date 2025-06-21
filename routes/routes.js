@@ -18,6 +18,7 @@ router.get('/auth/verify-token', verifyToken);
 router.post('/add-task', addTask);
 router.get('/get-task', getTask);
 router.delete('/delete-task', deleteTask);
+// router.put('/update-task', updateTask);
 
 
 
