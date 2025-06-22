@@ -204,53 +204,50 @@ const deleteTask = async (req, res) => {
        console.error(err);
      }
 
-
-
 };
 
 
-// const updateTask = async (req, res) => {
+const updateSubTask = async (req, res) => {
 
-//    try {
-//           const taskID = req.query.taskID;
-//           const userID = req.query.userID;
+   try {
+        const subTaskID = req.query.id;
+        console.log(subTaskID);
 
-//           if (!taskID) {
-//            errResponse.message = "Bad Request";
-//            errResponse.code = "BAD REQUEST";
-//            errResponse.status = 400,
-//            errResponse.details = "no task id";
+        if (!subTaskID) {
+           errResponse.message = "Bad Request";
+           errResponse.code = "BAD REQUEST";
+           errResponse.status = 400,
+           errResponse.details = "no task id";
 
-//            return res.status(400).json(errResponse);
-//           }
+           return res.status(400).json(errResponse);
+        }
 
-//           // await prisma.task.update({
-//           //     where: {
-//           //       id: 
-//           //     }, 
+        await prisma.subTask.update({
+                where: {id:subTaskID}, 
+                data: {isCompleted: true}
+        });
+
+        succResponse.message = "Updated successfully";
+        succResponse.code = "Ok";
+        succResponse.status = 200,
+        succResponse.details = "Successful";
+
+        const {tokenDetails, content, ...response} = succResponse;
+
+        return res.status(200).json(response);
 
 
+   }
+   catch (err) {
+     console.error(err);
+   }
 
-//           // });
-
-
-
-
-
-
-
-
-//    }
-//    catch (err) {
-//      console.error(err);
-//    }
-
-// };
+};
 
 
 module.exports = {
   addTask, 
   getTask,
   deleteTask,
-  // updateTask
+  updateSubTask
 }; 
